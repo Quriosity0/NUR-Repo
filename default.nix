@@ -20,6 +20,7 @@
   overlays = import ./overlays; # nixpkgs overlays
 
   BedrockNix = pkgs.callPackage ./pkgs/BedrockNix {};
+  olauncher = pkgs.callPackage ./pkgs/olauncher {};
 
   # some-qt5-package = pkgs.libsForQt5.callPackage ./pkgs/some-qt5-package { };
   # ...
