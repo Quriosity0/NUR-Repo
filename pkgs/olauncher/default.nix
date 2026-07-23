@@ -18,8 +18,8 @@
 
 let
   icon = fetchurl {
-    url = "https://raw.githubusercontent.com/Fallen-Breath/classic-minecraft-icon/refs/heads/master/src/main/resources/assets/classicminecrafticon/icons/icon_256x256.png";
-    hash = "sha256-QD8p+DpEXkc2MfYNKi0OwbEpilVdayDOXXJthpub7/8=";
+    url = "https://raw.githubusercontent.com/themuhamed/mcicons/refs/heads/main/public/icons/minecraft_grass_block.png";
+    hash = "sha256-MgUJks6ExC9uiOHFvOuWSsosatdPeHMomG3ON72wW4c=";
   };
 in
 stdenv.mkDerivation rec {
