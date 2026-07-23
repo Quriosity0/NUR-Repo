@@ -1,10 +1,10 @@
-{ lib, stdenvNoCC, fetchFromGitHub }:
+{ pkgs ? import <nixpkgs> { } }:
 
-stdenvNoCC.mkDerivation {
+pkgs.stdenvNoCC.mkDerivation {
   pname = "echo-sddm";
   version = "1.0.0";
 
-  src = fetchFromGitHub {
+  src = pkgs.fetchFromGitHub {
     owner = "xCaptaiN09";
     repo = "echo-sddm";
     rev = "v1.0.0";
@@ -22,7 +22,7 @@ stdenvNoCC.mkDerivation {
     runHook postInstall
   '';
 
-  meta = with lib; {
+  meta = with pkgs.lib; {
     description = "macOS Terminal-inspired SDDM theme";
     homepage = "https://github.com/xCaptaiN09/echo-sddm";
     license = licenses.mit;
