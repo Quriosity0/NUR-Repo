@@ -1,34 +1,50 @@
-{ pkgs ? import <nixpkgs> { }, temurin-jre-bin-25 }:
+{ lib
+, stdenv
+, fetchurl
+, makeWrapper
+, temurin-jre-bin-25
+, libGL
+, libX11
+, libXext
+, libXrandr
+, libXtst
+, libXi
+, freetype
+, glib
+, alsa-lib
+, copyDesktopItems
+, makeDesktopItem
+}:
 
 let
-  icon = pkgs.fetchurl {
+  icon = fetchurl {
     url = "https://raw.githubusercontent.com/Fallen-Breath/classic-minecraft-icon/refs/heads/master/src/main/resources/assets/classicminecrafticon/icons/icon_256x256.png";
     hash = "sha256-QD8p+DpEXkc2MfYNKi0OwbEpilVdayDOXXJthpub7/8=";
   };
 in
-pkgs.stdenv.mkDerivation rec {
+stdenv.mkDerivation rec {
   pname = "olauncher";
   version = "1.7.3_04";
 
-  src = pkgs.fetchurl {
+  src = fetchurl {
     url = "https://github.com/olauncher/olauncher/releases/download/v${version}/olauncher-${version}-redist.jar";
     hash = "sha256-K3CFG1h9E/EKO0b6mxdHuixO05CjyNXLr90udcDKjL8=";
   };
 
   dontUnpack = true;
 
-  nativeBuildInputs = [ pkgs.makeWrapper pkgs.copyDesktopItems ];
+  nativeBuildInputs = [ makeWrapper copyDesktopItems ];
 
-  runtimeLibs = pkgs.lib.makeLibraryPath [
-    pkgs.libGL
-    pkgs.libX11
-    pkgs.libXext
-    pkgs.libXrandr
-    pkgs.libXtst
-    pkgs.libXi
-    pkgs.freetype
-    pkgs.glib
-    pkgs.alsa-lib
+  runtimeLibs = lib.makeLibraryPath [
+    libGL
+    libX11
+    libXext
+    libXrandr
+    libXtst
+    libXi
+    freetype
+    glib
+    alsa-lib
   ];
 
   installPhase = ''
@@ -46,7 +62,7 @@ pkgs.stdenv.mkDerivation rec {
   '';
 
   desktopItems = [
-    (pkgs.makeDesktopItem {
+    (makeDesktopItem {
       name = "olauncher";
       exec = "olauncher";
       icon = "olauncher";
@@ -57,7 +73,7 @@ pkgs.stdenv.mkDerivation rec {
     })
   ];
 
-  meta = with pkgs.lib; {
+  meta = with lib; {
     description = "Modified old-style Minecraft launcher with Microsoft authentication support";
     homepage = "https://github.com/olauncher/olauncher";
     changelog = "https://github.com/olauncher/olauncher/releases/tag/v${version}";

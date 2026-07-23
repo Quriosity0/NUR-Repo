@@ -1,19 +1,19 @@
-{ pkgs ? import <nixpkgs> { } }:
+{ lib, appimageTools, fetchurl, makeDesktopItem, nix-update-script }:
 
 let
   pname = "BedrockOnLinux";
   version = "2.0.0";
 
-  src = pkgs.fetchurl {
+  src = fetchurl {
     url = "https://github.com/Wyze3306/BedrockOnLinux/releases/download/v${version}/BedrockOnLinux-${version}-x86_64.AppImage";
     hash = "sha256-eZepYrU/Mum1Xik20xA7Q/Ir1j34eanEmGdB5BFzHVI=";
   };
 
-  appimageContents = pkgs.appimageTools.extractType2 {
+  appimageContents = appimageTools.extractType2 {
     inherit pname version src;
   };
 
-  desktopItem = pkgs.makeDesktopItem {
+  desktopItem = makeDesktopItem {
     name = pname;
     exec = "${pname} gui";
     icon = pname;
@@ -26,7 +26,7 @@ let
     startupWMClass = "BedrockOnLinux";
   };
 in
-pkgs.appimageTools.wrapType2 {
+appimageTools.wrapType2 {
   inherit pname version src;
 
   extraInstallCommands = ''
@@ -37,9 +37,9 @@ pkgs.appimageTools.wrapType2 {
       $out/share/icons/hicolor/256x256/apps/${pname}.png
   '';
 
-  passthru.updateScript = pkgs.nix-update-script { };
+  passthru.updateScript = nix-update-script { };
 
-  meta = with pkgs.lib; {
+  meta = with lib; {
     description = "Run Minecraft Bedrock seamlessly on Linux";
     homepage = "https://github.com/Wyze3306/BedrockOnLinux";
     license = licenses.mit;

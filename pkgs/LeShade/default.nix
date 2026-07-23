@@ -1,19 +1,19 @@
-{ pkgs ? import <nixpkgs> { } }:
+{ lib, appimageTools, fetchurl, nix-update-script }:
 
 let
   pname = "leshade";
   version = "2.5.0";
 
-  src = pkgs.fetchurl {
+  src = fetchurl {
     url = "https://github.com/Ishidawg/LeShade/releases/download/${version}/LeShade-x86_64.AppImage";
     hash = "sha256-TwZAmBO/rgOkXD52Em3qwvt/mrgKleja3NlsW+QJFdk=";
   };
 
-  appimageContents = pkgs.appimageTools.extractType2 {
+  appimageContents = appimageTools.extractType2 {
     inherit pname version src;
   };
 in
-pkgs.appimageTools.wrapType2 {
+appimageTools.wrapType2 {
   inherit pname version src;
 
   extraPkgs = pkgs': with pkgs'; [
@@ -30,9 +30,9 @@ pkgs.appimageTools.wrapType2 {
       --replace 'Exec=LeShade' "Exec=$out/bin/leshade"
   '';
 
-  passthru.updateScript = pkgs.nix-update-script { };
+  passthru.updateScript = .nix-update-script { };
 
-  meta = with pkgs.lib; {
+  meta = with lib; {
     description = "ReShade manager for Linux (mod-manager style installer for ReShade shaders)";
     homepage = "https://github.com/Ishidawg/LeShade";
     license = licenses.mit;
