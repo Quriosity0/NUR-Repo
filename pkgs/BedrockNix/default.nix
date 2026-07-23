@@ -44,5 +44,6 @@ appimageTools.wrapType2 {
     homepage = "https://github.com/Wyze3306/BedrockOnLinux";
     license = licenses.mit;
     platforms = [ "x86_64-linux" ];
+    mainProgram = "BedrockOnLinux";
   };
 }
