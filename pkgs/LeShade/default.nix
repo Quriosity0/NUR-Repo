@@ -30,7 +30,7 @@ appimageTools.wrapType2 {
       --replace 'Exec=LeShade' "Exec=$out/bin/leshade"
   '';
 
-  passthru.updateScript = .nix-update-script { };
+  passthru.updateScript = nix-update-script { };
 
   meta = with lib; {
     description = "ReShade manager for Linux (mod-manager style installer for ReShade shaders)";
