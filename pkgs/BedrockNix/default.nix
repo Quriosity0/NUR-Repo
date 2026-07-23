@@ -37,9 +37,6 @@ appimageTools.wrapType2 {
       $out/share/icons/hicolor/256x256/apps/${pname}.png
   '';
 
-  extraPkgs = pkgs: with pkgs; [
-  ];
-
   passthru.updateScript = nix-update-script { };
 
   meta = with lib; {
