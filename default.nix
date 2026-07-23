@@ -23,6 +23,7 @@
   olauncher = pkgs.callPackage ./pkgs/olauncher {};
   echo-sddm = pkgs.callPackage ./pkgs/echo-sddm {};
   leshade = pkgs.callPackage ./pkgs/LeShade {};
+  zen-browser = pkgs.callPackage ./pkgs/zen-browser {};
 
   # some-qt5-package = pkgs.libsForQt5.callPackage ./pkgs/some-qt5-package { };
   # ...
