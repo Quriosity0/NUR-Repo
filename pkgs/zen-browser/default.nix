@@ -20,6 +20,7 @@ let
     desktopName = "Zen Browser";
     genericName = "Web Browser";
     categories = [ "Network" "WebBrowser" ];
+    startupWMClass = "zen";
     mimeTypes = [
       "text/html"
       "text/xml"
