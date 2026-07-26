@@ -2,7 +2,7 @@
 
 let
   pname = "BedrockOnLinux";
-  version = "2.0.0";
+  version = "2.1.1";
 
   src = fetchurl {
     url = "https://github.com/Wyze3306/BedrockOnLinux/releases/download/v${version}/BedrockOnLinux-${version}-x86_64.AppImage";
