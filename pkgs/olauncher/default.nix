@@ -78,6 +78,7 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/olauncher/olauncher";
     changelog = "https://github.com/olauncher/olauncher/releases/tag/v${version}";
     license = licenses.cc0;
+    sourceProvenance = [ lib.sourceTypes.binaryBytecode ];
     platforms = platforms.linux;
     mainProgram = "olauncher";
   };

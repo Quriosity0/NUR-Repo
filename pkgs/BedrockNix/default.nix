@@ -43,6 +43,7 @@ appimageTools.wrapType2 {
     description = "Run Minecraft Bedrock seamlessly on Linux";
     homepage = "https://github.com/Wyze3306/BedrockOnLinux";
     license = licenses.mit;
+    sourceProvenance = [ lib.sourceTypes.binaryNativeCode ];
     platforms = [ "x86_64-linux" ];
     mainProgram = "BedrockOnLinux";
   };

@@ -36,6 +36,7 @@ appimageTools.wrapType2 {
     description = "ReShade manager for Linux (mod-manager style installer for ReShade shaders)";
     homepage = "https://github.com/Ishidawg/LeShade";
     license = licenses.mit;
+    sourceProvenance = [ lib.sourceTypes.binaryNativeCode ];
     platforms = [ "x86_64-linux" ];
     mainProgram = "leshade";
   };

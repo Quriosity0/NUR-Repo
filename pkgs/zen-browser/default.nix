@@ -48,6 +48,7 @@ appimageTools.wrapType2 {
     description = "welcome to a calmer internet";
     homepage = "https://zen-browser.app/";
     license = licenses.mpl20;
+    sourceProvenance = [ lib.sourceTypes.binaryNativeCode ];
     platforms = [ "x86_64-linux" ];
     mainProgram = "zen-browser";
   };
