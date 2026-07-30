@@ -1,0 +1,49 @@
+{ lib, appimageTools, fetchurl, makeDesktopItem, nix-update-script }:
+
+let
+  pname = "Tabby";
+  version = "1.0.235";
+
+  src = fetchurl {
+    url = "https://github.com/Eugeny/tabby/releases/download/v${version}/tabby-${version}-linux-x64.AppImage";
+    hash = "sha256-ooDyhz7BR9IzfA2q/X/yHmBLDuv/M2E3Bz7UQzSzteQ=";
+  };
+
+  appimageContents = appimageTools.extractType2 {
+    inherit pname version src;
+  };
+
+  desktopItem = makeDesktopItem {
+    name = pname;
+    exec = "${pname} --no-sandbox %U";
+    icon = pname;
+    desktopName = "Tabby";
+    comment = "A terminal for a modern age";
+    categories = [ "System" "TerminalEmulator" "Utility" ];
+    startupWMClass = "tabby";
+    mimeTypes = [
+      "x-scheme-handler/tabby"
+    ];
+  };
+in
+appimageTools.wrapType2 {
+  inherit pname version src;
+
+  extraInstallCommands = ''
+    install -m 444 -D ${desktopItem}/share/applications/${pname}.desktop \
+      $out/share/applications/${pname}.desktop
+
+    install -m 444 -D ${appimageContents}/usr/bin/data/icon.png \
+      $out/share/icons/hicolor/256x256/apps/${pname}.png
+  '';
+
+  passthru.updateScript = nix-update-script { };
+
+  meta = with lib; {
+    description = "A terminal for a more modern age";
+    homepage = "https://github.com/Eugeny/tabby";
+    license = licenses.mit;
+    sourceProvenance = [ lib.sourceTypes.binaryNativeCode ];
+    platforms = [ "x86_64-linux" ];
+    mainProgram = "BedrockOnLinux";
+  };
