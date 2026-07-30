@@ -45,6 +45,6 @@ appimageTools.wrapType2 {
     license = licenses.mit;
     sourceProvenance = [ lib.sourceTypes.binaryNativeCode ];
     platforms = [ "x86_64-linux" ];
-    mainProgram = "BedrockOnLinux";
+    mainProgram = "Tabby";
   };
 }
