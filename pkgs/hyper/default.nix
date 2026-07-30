@@ -5,8 +5,8 @@ let
   version = "4.0.0-q";
 
   src = fetchurl {
-    url = "https://github.com/quine-global/hyper/releases/download/${version}-canary.14/Hyper-${version}-canary.13-x86_64.AppImage";
-    hash = "sha256-ooDyhz7BR9IzfA2q/X/yHmBLDuv/M2E3Bz7UQzSzteQ=";
+    url = "https://github.com/quine-global/hyper/releases/download/v${version}-canary.14/Hyper-${version}-canary.13-x86_64.AppImage";
+    hash = "sha256-0iV+0fC50J7lEKtKjCTQWqrh5HVmv/dhjqKULAci7V8=";
   };
 
   appimageContents = appimageTools.extractType2 {
