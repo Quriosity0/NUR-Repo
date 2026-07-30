@@ -33,7 +33,7 @@ appimageTools.wrapType2 {
     install -m 444 -D ${desktopItem}/share/applications/${pname}.desktop \
       $out/share/applications/${pname}.desktop
 
-    install -m 444 -D ${appimageContents}/usr/bin/data/icon.png \
+    install -m 444 -D ${appimageContents}/usr/share/icons/hicolor/256x256/apps/hyper.png \
       $out/share/icons/hicolor/256x256/apps/${pname}.png
   '';
 
