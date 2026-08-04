@@ -21,6 +21,13 @@ in
     };
 
   config = lib.mkIf cfg.enable {
+    assertions = [
+      {
+        assertion = cfg.wallpaper.image == null || cfg.wallpaper.enable;
+        message = "quriosity.sddm-themes.echo: wallpaper.image is set, but wallpaper is disabled (wallpaper.enable = false). Wallpaper image will be ignored";
+      }
+    ];
+
     environment.systemPackages = [
       (pkgs.echo-sddm.override {
         enableWallpaper = cfg.wallpaper.enable;
