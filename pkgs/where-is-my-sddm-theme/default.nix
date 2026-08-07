@@ -16,7 +16,7 @@ stdenvNoCC.mkDerivation {
   installPhase = ''
     runHook preInstall
     mkdir -p $out/share/sddm/themes/wims-theme
-    cp -r where-is-my-sddm-theme/Main.qml where-is-my-sddm-theme/UsersChoose.qml where-is-my-sddm-theme/SessionsChoose.qml where-is-my-sddm-theme/metadata.desktop where-is-my-sddm-theme/theme.conf where-is-my-sddm-theme/example-configs \
+    cp -r where_is_my_sddm_theme/Main.qml where_is_my_sddm_theme/UsersChoose.qml where_is_my_sddm_theme/SessionsChoose.qml where_is_my_sddm_theme/metadata.desktop where_is_my_sddm_theme/theme.conf where_is_my_sddm_theme/example_configs \
       $out/share/sddm/themes/wims-theme/
   '';
 
