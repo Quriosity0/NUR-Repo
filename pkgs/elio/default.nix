@@ -13,7 +13,7 @@ let
 
   src = fetchurl {
     url = "https://github.com/elio-fm/elio/releases/download/v${version}/elio-${version}-x86_64-unknown-linux-gnu.tar.gz";
-    hash = "sha256-R+FJK+3KWuQUL1SiIFWeC+96eE+1MJCPYFnadm0WIi8=";
+    hash = "sha256-9cW/xUA9p0LEYI3/j4MGPVZvcyJpV1JYKYBuHur4sTM=";
   };
 in
 stdenv.mkDerivation {
