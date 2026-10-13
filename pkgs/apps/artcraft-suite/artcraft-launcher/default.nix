@@ -34,16 +34,16 @@ in
 
 rustPlatform.buildRustPackage (finalAttrs: {
   pname = "artcraft-launcher";
-  version = "0.4.0";
+  version = "0.4.1";
 
   src = fetchFromGitHub {
     owner = "storytold";
     repo = "craft-launcher";
     rev = "v${finalAttrs.version}";
-    hash = "sha256-c6vbEkcPRqYq059ewNbKuHZEU4n2y/MnQdfnD5uaEWw=";
+    hash = "sha256-mq8MeSsWRFoLhKl/7YHQiwS+yPUaUidofOXEJOZznFI=";
   };
 
-  cargoHash = "sha256-WPDTGc8GEP91WmfaGh5uYsiudTPpTwouPtipTHAi3ZA=";
+  cargoHash = "sha256-tUkHXAaklHqAh0/gjN2ebkgL81PnQ0KjCBrxjrGw/Vw=";
   cargoBuildFlags = [ "--package" "artcraft-launcher" ];
   cargoTestFlags = [ "--package" "artcraft-launcher" ];
 
