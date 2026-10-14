@@ -44,7 +44,7 @@ rustPlatform.buildRustPackage (finalAttrs: {
     hash = "sha256-SfrnSydUVuh+3tJ69OINsc1thkubgVh8aEVBfZyXmsM=";
   };
 
-  cargoHash = "";
+  cargoHash = "sha256-D/CRhDoUbKvz/ev8NKRm2aDEyOA4NL5mdnx+O+iXHRI=";
   cargoBuildFlags = [ "--package" "wordcraft" "--package" "wordcraft-cli" ];
   cargoTestFlags = [ "--package" "wordcraft" "--package" "wordcraft-cli" ];
 
