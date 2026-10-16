@@ -36,7 +36,8 @@
   figcraft = pkgs.callPackage ./pkgs/apps/artcraft-suite/figcraft {};
 
   # Compatibility tools
-  proton-ge = pkgs.callPackage ./pkgs/compat-tools/proton-ge {};
+  proton-ge = pkgs.callPackage ./pkgs/compat-tools/ge-proton {};
+  dwproton = pkgs.callPackage ./pkgs/compat-tools/dwproton {};
 
   # SDDM themes
   echo-sddm = pkgs.callPackage ./pkgs/sddm-themes/echo-sddm {};
