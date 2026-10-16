@@ -35,6 +35,9 @@
   cadcraft = pkgs.callPackage ./pkgs/apps/artcraft-suite/cadcraft {};
   figcraft = pkgs.callPackage ./pkgs/apps/artcraft-suite/figcraft {};
 
+  # Compatibility tools
+  proton-ge = pkgs.callPackage ./pkgs/compat-tools/proton-ge {};
+
   # SDDM themes
   echo-sddm = pkgs.callPackage ./pkgs/sddm-themes/echo-sddm {};
   where-is-my-sddm-theme = pkgs.callPackage ./pkgs/sddm-themes/where-is-my-sddm-theme {};
