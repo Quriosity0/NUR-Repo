@@ -50,7 +50,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
 
       (This package is intended for use in the `programs.steam.extraCompatPackages` option only.)
     '';
-    homepage = "https://github.com/GloriousEggroll/proton-ge-custom";
+    homepage = "https://dawn.wine/dawn-winery/dwproton";
     license = lib.licenses.bsd3;
     platforms = [ "x86_64-linux" ];
     sourceProvenance = [ lib.sourceTypes.binaryNativeCode ];
