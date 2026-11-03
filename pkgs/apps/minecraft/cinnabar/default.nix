@@ -37,7 +37,15 @@ appimageTools.wrapType2 {
       $out/usr/share/icons/hicolor/512x512/apps/cinnabar.png
   '';
 
-  passthru.updateScript = nix-update-script { };
+  passthru.updateScript = writeScript "update-cinnabar" ''
+      #!/usr/bin/env nix-shell
+      #!nix-shell -i bash -p curl jq common-updater-scripts
+      repo="https://api.github.com/repos/cinnabar-mc/cinnabar/releases"
+      version="$(curl -sL "$repo" | jq 'map(select(.prerelease == false)) | .[0].tag_name' --raw-output)"
+      for platform in ${lib.escapeShellArgs finalAttrs.meta.platforms}; do
+        update-source-version cinnabar "$version" --ignore-same-version --source-key="variants.$platform.src"
+      done
+    '';
 
   meta = with lib; {
     description = "Minecraft: Bedrock Edition, rebuilt from scratch in Rust";
