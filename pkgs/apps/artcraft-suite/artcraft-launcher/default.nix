@@ -44,7 +44,10 @@ rustPlatform.buildRustPackage (finalAttrs: {
   };
 
   cargoHash = "sha256-ywlE1xHrZodNIoqQAAM+p3GwgcchIzHF+Gvq4FZuDPs=";
-  cargoPatches = [ ./remove-unused-egui-patches.patch ];
+  cargoPatches = [
+    ./remove-unused-egui-patches.patch
+    ./fix-craft-keymap-default-features.patch
+  ];
   postPatch = ''
     # Keep the vendored lockfile in sync with the patched one above.
     cp Cargo.lock "$cargoDepsCopy/Cargo.lock"
