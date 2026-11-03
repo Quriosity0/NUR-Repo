@@ -42,9 +42,7 @@ appimageTools.wrapType2 {
       #!nix-shell -i bash -p curl jq common-updater-scripts
       repo="https://api.github.com/repos/cinnabar-mc/cinnabar/releases"
       version="$(curl -sL "$repo" | jq 'map(select(.prerelease == false)) | .[0].tag_name' --raw-output)"
-      for platform in ${lib.escapeShellArgs finalAttrs.meta.platforms}; do
-        update-source-version cinnabar "$version" --ignore-same-version --source-key="variants.$platform.src"
-      done
+      update-source-version cinnabar "''${version#v}"
     '';
 
   meta = with lib; {
