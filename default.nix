@@ -22,6 +22,7 @@
   # Minecraft
   bol = pkgs.callPackage ./pkgs/apps/minecraft/bol {};
   olauncher = pkgs.callPackage ./pkgs/apps/minecraft/olauncher {};
+  cinnabar = pkgs.callPackage ./pkgs/apps/minecraft/cinnabar {};
   # Artcraft Suite
   artcraft-launcher = pkgs.callPackage ./pkgs/apps/artcraft-suite/artcraft-launcher {};
   photocraft = pkgs.callPackage ./pkgs/apps/artcraft-suite/photocraft {};
