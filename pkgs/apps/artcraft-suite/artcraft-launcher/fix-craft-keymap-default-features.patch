@@ -1,9 +1,0 @@
---- a/crates/menu/Cargo.toml
-+++ b/crates/menu/Cargo.toml
-@@ -8,7 +8,7 @@ repository.workspace = true
- 
- [dependencies]
--craft-keymap = { workspace = true, default-features = false, features = ["egui"] }
-+craft-keymap = { workspace = true, features = ["egui"] }
- craft-quit = { workspace = true, features = ["egui"] }
- egui = { workspace = true }
