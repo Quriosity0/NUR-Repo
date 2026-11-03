@@ -46,7 +46,7 @@ rustPlatform.buildRustPackage (finalAttrs: {
     hash = "sha256-ffMDpDziPZ18qa7hHbgb67cvi5w6010o4Q3fHvanyYg=";
   };
 
-  cargoHash = "sha256-eD7hGaIfmdifVZc76K4GvTPV60hBc6LmFmz88kuysG8=";
+  cargoHash = "sha256-bj8Wo0XuEieVKn+DbBHe+qJ94teIY4tu8XBO4Pqu4vw=";
   cargoPatches = [ ./remove-unused-egui-patches.patch ];
   postPatch = ''
     # Keep the vendored lockfile in sync with the patched one above.
