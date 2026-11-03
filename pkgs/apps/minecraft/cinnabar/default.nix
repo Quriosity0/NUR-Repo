@@ -1,4 +1,4 @@
-{ lib, appimageTools, fetchurl, makeDesktopItem, nix-update-script }:
+{ lib, appimageTools, fetchurl, makeDesktopItem, writeScript, nix-update-script }:
 
 let
   pname = "cinnabar";
