@@ -1,4 +1,4 @@
-{ lib, appimageTools, fetchurl, makeDesktopItem, nix-update-script }:
+{ lib, appimageTools, fetchurl, makeDesktopItem, writeScript, nix-update-script }:
 
 let
   pname = "BedrockOnLinux";
@@ -61,7 +61,13 @@ appimageTools.wrapType2 {
       $out/share/icons/hicolor/256x256/apps/${pname}.png
   '';
 
-  passthru.updateScript = nix-update-script { };
+  passthru.updateScript = writeScript "update-bedrockonlinux" ''
+      #!/usr/bin/env nix-shell
+      #!nix-shell -i bash -p curl jq common-updater-scripts
+      repo="https://api.github.com/repos/Wyze3306/BedrockOnLinux/releases"
+      version="$(curl -sL "$repo" | jq 'map(select(.prerelease == false)) | .[0].tag_name' --raw-output)"
+      update-source-version bol "''${version#v}"
+    '';
 
   meta = with lib; {
     description = "Run Minecraft Bedrock seamlessly on Linux";
