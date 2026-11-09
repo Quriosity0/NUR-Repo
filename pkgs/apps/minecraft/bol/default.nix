@@ -2,11 +2,13 @@
 
 let
   pname = "BedrockOnLinux";
-  version = "2.2.10";
+  version = "2.3.0";
 
   src = fetchurl {
     url = "https://github.com/Wyze3306/BedrockOnLinux/releases/download/v${version}/BedrockOnLinux-${version}-x86_64.AppImage";
-    hash = "sha256-LWlnPwdYGxla2QqtSQvbINbX0Fq2iQi04Hb/N1rMMxs=";
+    hash = "sha256-bY/HJDvIGc5z7KoAmB830qEo3M5hFzuzOwRordCLLpM=";
+  } // {
+    tag = "refs/tags/v${version}";
   };
 
   appimageContents = appimageTools.extract {
@@ -64,8 +66,8 @@ appimageTools.wrapType2 {
   passthru.updateScript = writeScript "update-bedrockonlinux" ''
       #!/usr/bin/env nix-shell
       #!nix-shell -i bash -p curl jq common-updater-scripts
-      repo="https://api.github.com/repos/Wyze3306/BedrockOnLinux/releases"
-      version="$(curl -sL "$repo" | jq 'map(select(.prerelease == false)) | .[0].tag_name' --raw-output)"
+      repo="https://api.github.com/repos/Wyze3306/BedrockOnLinux/releases/latest"
+      version="$(curl -fsSL "$repo" | jq -er '.tag_name | select(startswith("v"))')"
       update-source-version bol "''${version#v}"
     '';
 
