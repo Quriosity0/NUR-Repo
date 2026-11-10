@@ -46,6 +46,7 @@ stdenvNoCC.mkDerivation {
     description = "A GTK theme matching the Darkly Qt style";
     homepage = "https://github.com/wrymt/darkly-gtk";
     license = licenses.lgpl21Plus;
+    sourceProvenance = [ lib.sourceTypes.fromSource ];
     platforms = platforms.linux;
   };
 }
